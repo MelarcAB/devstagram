@@ -1,6 +1,6 @@
 # DevStagram
 
-¡Repositorio de DevStagram. Este es un clon de Instagram que que forma parte de un curso de Laravel y Tailwind (Udemy)
+Repositorio de DevStagram. Este es un clon de Instagram que que forma parte de un curso de Laravel y Tailwind (Udemy)
 
 ## ¿Qué es DevStagram?
 
