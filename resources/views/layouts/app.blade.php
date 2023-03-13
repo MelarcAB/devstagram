@@ -22,8 +22,10 @@
             </h1>
             @auth
             <p>
+                <a href="{{ route('posts.index',auth()->user()) }}">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 {{ auth()->user()->username}}
+                </a>
             </p>
             @endauth
 
@@ -37,6 +39,9 @@
 
             @else
             <nav class="flex gap-2 items-center">
+                <a href="{{route('posts.create')}}" class="flex items-center bg-white border p-2 text-gray-600 rounded text-sm uppercase font-bold cursor-pointer">
+                    <i class="fa-solid fa-camera-retro mr-2 "></i> Subir</a>
+
                 <a class="font-bold uppercase text-gray-600 text-sm" href="{{route('logout')}}">
                     Cerrar sesión</a>
             </nav>

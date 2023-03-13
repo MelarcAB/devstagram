@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+//user
+use App\Models\User;
+
+
 class PostController extends Controller
 {
 
@@ -16,8 +20,15 @@ class PostController extends Controller
 
 
 
-    function index()
+    function index(User $user)
     {
-        return view('home');
+        return view('home', [
+            'user' => $user
+        ]);
+    }
+
+    function create()
+    {
+        return view('posts.create');
     }
 }

@@ -36,10 +36,14 @@ Iniciar sesión
                 @error('password')
                 <span class="text-red-500 text-sm">{{$message}}</span>
                 @enderror
-
             </div>
 
-            <input type="submit" value="Create account" class="bg-sky-600 hover:bg-sky-700 transition-colorscursor-pointer uppdercase font-bold w-full p-3 text-white rounded-lg cursor-pointer" />
+            <div class="mb-5">
+                <input type="checkbox" id="remember" name="remember" class="">
+                <label for="remember" class="text-sm">Recuérdame</label>
+            </div>
+
+            <input type="submit" value="Login" class="bg-sky-600 hover:bg-sky-700 transition-colorscursor-pointer uppdercase font-bold w-full p-3 text-white rounded-lg cursor-pointer" />
 
         </form>
     </div>
