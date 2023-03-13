@@ -1,3 +1,19 @@
-import './bootstrap';
+import Dropzone from 'dropzone';
+
 import '../sass/app.scss';
-import '../css/app.css'; 
+import '../css/app.css';
+
+
+
+Dropzone.autoDiscover = false;
+
+const dropzone = new Dropzone('#dropzone', {
+    dictDefaultMessage: 'Drop files here to upload',
+    acceptedFiles: 'image/*',
+    //   acceptedFiles: '.png',
+    maxFilesize: 3,
+    addRemoveLinks: true,
+    dictRemoveFile: 'Remove',
+    maxFiles: 1,
+    uploadMultiple: false,
+});

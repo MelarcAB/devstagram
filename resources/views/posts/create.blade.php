@@ -8,7 +8,8 @@ Subir publicación
 
 <div class="md:flex md:items-center">
     <div class="md:w-1/2 px-10">
-        IMG
+        <form action="/imagenes" id="dropzone" class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center">
+        </form>
     </div>
     <div class="md:w-1/2 bg-white p-10 m-3  mt-10 md:mt-3 rounded-lg shadow-md">
         <form method="POST" action="{{ route('register.store') }}" novalidate>
