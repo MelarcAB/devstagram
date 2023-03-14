@@ -16,4 +16,10 @@ const dropzone = new Dropzone('#dropzone', {
     dictRemoveFile: 'Remove',
     maxFiles: 1,
     uploadMultiple: false,
-});
+}).on('success', function (file, response) {
+    console.log(response);
+}
+).on('removedfile', function (file) {
+    console.log('file removed');
+}
+);

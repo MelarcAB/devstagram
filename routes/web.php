@@ -26,3 +26,8 @@ Route::controller(App\Http\Controllers\PostController::class)->group(function ()
     //get posts create
     Route::get('/post/crear', 'create')->name('posts.create');
 });
+
+//ImagenController
+Route::controller(App\Http\Controllers\ImagenController::class)->group(function () {
+    Route::post('/imagen/crear', 'store')->name('imagen.store');
+});
