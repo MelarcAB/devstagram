@@ -30,9 +30,17 @@ Route::controller(App\Http\Controllers\PostController::class)->group(function ()
     Route::get('/post/crear', 'create')->name('posts.create');
     //post posts create
     Route::post('/posts', 'store')->name('posts.store');
+    //get posts 
+    Route::get('/{user:username}/posts/{post}', 'show')->name('posts.show');
 });
 
 //ImagenController
 Route::controller(App\Http\Controllers\ImagenController::class)->group(function () {
     Route::post('/imagen/crear', 'store')->name('imagen.store');
+});
+
+
+//comment controller
+Route::controller(App\Http\Controllers\CommentsController::class)->group(function () {
+    Route::post('/{user:username}/posts/{post}', 'store')->name('comments.store');
 });

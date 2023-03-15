@@ -17,21 +17,31 @@ class PostController extends Controller
     //constructor
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['index', 'show']);
     }
 
 
 
     function index(User $user)
     {
+        $posts = Post::where('user_id', $user->id)->paginate(3);
         return view('home', [
-            'user' => $user
+            'user' => $user,
+            'posts' => $posts
         ]);
     }
 
     function create()
     {
         return view('posts.create');
+    }
+
+    function show(User $user, Post $post)
+    {
+        return view('posts.show', [
+            'user' => $user,
+            'post' => $post
+        ]);
     }
 
 
