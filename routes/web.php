@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('principal');
 });
+Route::get('/phpinfo', function () {
+    return phpinfo();
+});
 
 //Crear cuenta Auth/RegisterController
 Route::controller(App\Http\Controllers\Auth\RegisterController::class)->group(function () {
@@ -25,6 +28,8 @@ Route::controller(App\Http\Controllers\PostController::class)->group(function ()
     Route::get('/{user:username}', 'index')->name('posts.index');
     //get posts create
     Route::get('/post/crear', 'create')->name('posts.create');
+    //post posts create
+    Route::post('/posts', 'store')->name('posts.store');
 });
 
 //ImagenController

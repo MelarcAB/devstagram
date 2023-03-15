@@ -17,19 +17,25 @@ Subir publicación
         </form>
     </div>
     <div class="md:w-1/2 bg-white p-10 m-3  mt-10 md:mt-3 rounded-lg shadow-md">
-        <form method="POST" action="{{ route('register.store') }}" novalidate>
+        <form method="POST" action="{{ route('posts.store') }}" novalidate>
             @csrf
             <div class="mb-5">
-                <label for="titulo" class="mb-2 block uppercase text-gray-500 font-bold">Título</label>
-                <input value="{{old('titulo')}}" type="text" id="titulo" name="titulo" placeholder="Titulo de la publicación" class="border p-3 w-full rounded-lg @error('titulo') border-red-500 @enderror">
-                @error('titulo')
+                <label for="title" class="mb-2 block uppercase text-gray-500 font-bold">Título</label>
+                <input value="{{old('title')}}" type="text" id="title" name="title" placeholder="Titulo de la publicación" class="border p-3 w-full rounded-lg @error('title') border-red-500 @enderror">
+                @error('title')
                 <span class="text-red-500 text-sm">{{$message}}</span>
                 @enderror
             </div>
             <div class="mb-5">
-                <label for="descripcion" class="mb-2 block uppercase text-gray-500 font-bold">Descripción</label>
-                <textarea  id="descripcion" name="descripcion" placeholder="Descripción de la publicación" class="border p-3 w-full rounded-lg @error('descripcion') border-red-500 @enderror">{{old('descripcion')}}</textarea>
-                @error('descripcion')
+                <label for="description" class="mb-2 block uppercase text-gray-500 font-bold">Descripción</label>
+                <textarea  id="description" name="description" placeholder="Descripción de la publicación" class="border p-3 w-full rounded-lg @error('description') border-red-500 @enderror">{{old('description')}}</textarea>
+                @error('description')
+                <span class="text-red-500 text-sm">{{$message}}</span>
+                @enderror
+            </div>
+            <div class="mb-5">
+                <input type="hidden" name="image" id="image" value="{{ old('image') }}">
+                @error('image')
                 <span class="text-red-500 text-sm">{{$message}}</span>
                 @enderror
             </div>

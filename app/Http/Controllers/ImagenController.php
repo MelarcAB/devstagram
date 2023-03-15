@@ -17,15 +17,15 @@ class ImagenController extends Controller
             $img = $request->file('file');
 
             $img_name = Str::uuid() . '.' . $img->getClientOriginalExtension();
-
-            $img_server = Image::make($img)->fit(1200, 1200);
-            var_dump($img_server);
-            return response()->json(['test' => 'test']);
+            $img_server = Image::make($img);
+            //fit image
+            $img_server->fit(1000, 1000);
             $img_path = public_path('uploads/' . $img_name);
 
+
             $img_server->save($img_path);
+            return response()->json(['image' => $img_name]);
         } catch (\Exception $e) {
-            print($e->getMessage());
             return response()->json(['error' => $e->getMessage()]);
         }
     }
