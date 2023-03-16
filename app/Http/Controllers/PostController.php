@@ -72,4 +72,15 @@ class PostController extends Controller
 
         return redirect()->route('posts.index', ['user' => auth()->user()->username]);
     }
+
+    function destroy(Post $post)
+    {
+        $this->authorize('delete', $post);
+        $img_path = public_path('uploads/' . $post->image);
+        $post->delete();
+        if (file_exists($img_path)) {
+            unlink($img_path);
+        }
+        return redirect()->route('posts.index', ['user' => auth()->user()->username])->with('message', 'Post eliminado');
+    }
 }

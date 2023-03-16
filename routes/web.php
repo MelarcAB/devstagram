@@ -32,6 +32,8 @@ Route::controller(App\Http\Controllers\PostController::class)->group(function ()
     Route::post('/posts', 'store')->name('posts.store');
     //get posts 
     Route::get('/{user:username}/posts/{post}', 'show')->name('posts.show');
+    //delete
+    Route::delete('/posts/{post}', 'destroy')->name('posts.destroy');
 });
 
 //ImagenController

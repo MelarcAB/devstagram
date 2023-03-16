@@ -16,6 +16,17 @@
                 <p class="text-sm text-gray-500">{{ $post->created_at->diffForHumans() }}</p>
                 <p class="mt-5">{{ $post->description }}</p>
             </div>
+            @auth
+                @if (Auth::user()->id == $post->user_id)
+                    <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition-colors"
+                            type="submit" value="Eliminar" />
+                    </form>
+                @endif
+
+            @endauth
         </div>
         <div class="md:w-1/2 p-5">
             @if (Auth::check())
