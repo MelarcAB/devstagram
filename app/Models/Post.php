@@ -30,4 +30,20 @@ class Post extends Model
     {
         return $this->hasMany(Comments::class);
     }
+
+    //likes
+    public function likes()
+    {
+        return $this->hasMany(Likes::class);
+    }
+
+
+    public function checkLike(User $user = null)
+    {
+        if ($user == null) {
+            //usar el usuario autenticado
+            $user = auth()->user();
+        }
+        return $this->likes->contains('user_id', $user->id);
+    }
 }

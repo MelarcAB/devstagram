@@ -46,3 +46,19 @@ Route::controller(App\Http\Controllers\ImagenController::class)->group(function 
 Route::controller(App\Http\Controllers\CommentsController::class)->group(function () {
     Route::post('/{user:username}/posts/{post}', 'store')->name('comments.store');
 });
+
+//likes
+Route::controller(App\Http\Controllers\LikesController::class)->group(function () {
+    Route::post('/posts/{post}/like', 'store')->name('likes.store');
+    Route::delete('/posts/{post}/like', 'destroy')->name('likes.destroy');
+});
+
+
+//profile
+Route::controller(App\Http\Controllers\ProfileController::class)->middleware('auth')
+    ->group(function () {
+        Route::get('/{user:username}/edit', 'index')->name('profile.index');
+
+        //post
+        Route::post('/{user:username}/edit', 'store')->name('profile.store');
+    });
