@@ -9,6 +9,18 @@ Route::get('/phpinfo', function () {
     return phpinfo();
 });
 
+
+
+//profile
+Route::controller(App\Http\Controllers\ProfileController::class)->middleware('auth')
+    ->group(function () {
+        Route::get('/edit-profile', 'index')->name('profile.index');
+
+        //post
+        Route::post('/edit', 'store')->name('profile.store');
+    });
+
+
 //Crear cuenta Auth/RegisterController
 Route::controller(App\Http\Controllers\Auth\RegisterController::class)->group(function () {
     Route::get('/crear-cuenta', 'create')->name('register.index');
@@ -52,13 +64,3 @@ Route::controller(App\Http\Controllers\LikesController::class)->group(function (
     Route::post('/posts/{post}/like', 'store')->name('likes.store');
     Route::delete('/posts/{post}/like', 'destroy')->name('likes.destroy');
 });
-
-
-//profile
-Route::controller(App\Http\Controllers\ProfileController::class)->middleware('auth')
-    ->group(function () {
-        Route::get('/{user:username}/edit', 'index')->name('profile.index');
-
-        //post
-        Route::post('/{user:username}/edit', 'store')->name('profile.store');
-    });

@@ -7,7 +7,8 @@
     <div class="flex justify-center">
         <div class="w-full md:w-8/12   lg:w-6/12 flex flex-col items-center md:flex-row">
             <div class="w-8/12; lg:w-6/12 px-5">
-                <img src="{{ asset('img/profile.png') }}" alt="Profile image" />
+                <img src="{{ $user->image ? asset('profiles') . '/' . $user->image : asset('img/profile.png') }}"
+                    alt="Profile image" />
             </div>
             <div
                 class="md:w-8/12; lg:w-6/12 px-5 flex flex-col  items-center md:justify-center md:items-start py-10 md:py-10">
@@ -16,7 +17,7 @@
                     <p class=" text-2xl">{{ $user->username }}</p>
                     @auth
                         @if (Auth::user()->id == $user->id)
-                            <a href="{{ route('profile.index', $user) }}">
+                            <a href="{{ route('profile.index') }}">
                                 <i class="fas fa-edit text-gray-500  hover:text-gray-700"></i>
                             </a>
                         @endif
