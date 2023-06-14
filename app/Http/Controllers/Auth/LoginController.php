@@ -35,7 +35,7 @@ class LoginController extends Controller
         $this->validate($request, $rules, $messages);
 
         if (auth()->attempt($request->only('email', 'password'), $request->remember)) {
-            $user = auth()->user();
+            $user = User::where('email', $request->email)->first();
             return redirect()->route('posts.index', ['user' => $user]);
         } else {
             return back()->with([
