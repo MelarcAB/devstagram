@@ -60,6 +60,6 @@ class RegisterController extends Controller
         //or
         //auth()->login($user);
         //posts.index
-        return redirect()->route('posts.index')->with('success', 'Usuario creado correctamente');
+        return redirect()->route('posts.index', ['user' => auth()->user()])->with('success', 'Usuario creado correctamente');
     }
 }
