@@ -33,7 +33,18 @@ class ProfileController extends Controller
         //validacion
         $this->validate($request, [
             // 'username' => 'required|max:20|min:3|unique:users',
-            'username' => ['required', 'max:20', 'min:3', 'unique:users', 'not_in:admin,root,administrador,moderador,mod,moderador,moderadora,moderadores,moderadoras,administradores,administradora,administradoras,root,roots,admin,admins,administrador,administradores,administradora,administradoras,moderador,moderadores,moderadora,moderadoras,usuario,usuarios,usuario,usuarios,us,edit-profile']
+            $actual_username = auth()->user()->username,
+            //permitir que el usuario actual pueda usar su mismo username
+            'username' => [
+                'required',
+                'max:20',
+                'min:3',
+                'unique:users',
+                //descartar el username actual de unique
+                "unique:users,username,{$actual_username},username",
+                'not_in:admin,root,administrador,moderador,mod,moderador,moderadora,moderadores,moderadoras,administradores,administradora,administradoras,root,roots,admin,admins,administrador,administradores,administradora,administradoras,moderador,moderadores,moderadora,moderadoras,usuario,usuarios,usuario,usuarios,us,edit-profile',
+
+            ]
         ], $msg_validaciones);
 
         $user = auth()->user();
