@@ -36,7 +36,7 @@ class LoginController extends Controller
 
         if (auth()->attempt($request->only('email', 'password'), $request->remember)) {
             $user = auth()->user();
-            return redirect()->route('posts.index', $user->username);
+            return redirect()->route('posts.index', ['user' => $user]);
         } else {
             return back()->with([
                 'message' => 'El email o la contraseña no son correctos.'
